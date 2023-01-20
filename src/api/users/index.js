@@ -26,8 +26,8 @@ usersRouter.get("/", async (req, res, next) => {
 usersRouter.get("/:userId", async (req, res, next) => {
   try {
     const user = await UserModel.findById(req.params.userId);
-    if (author) {
-      res.send(author);
+    if (user) {
+      res.send(user);
     } else {
       next(
         createHttpError(404, `User with id ${req.params.userId} not found!`)
