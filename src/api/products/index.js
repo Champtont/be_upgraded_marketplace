@@ -28,7 +28,7 @@ productsRouter.get("/", async (req, res, next) => {
       .skip(mongoQuery.options.skip)
       .sort(mongoQuery.options.sort)
       .populate({
-        path: "user",
+        path: "reviews.comment.user",
       });
     res.send({
       links: mongoQuery.links(process.env.PORT, total),

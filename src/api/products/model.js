@@ -20,7 +20,7 @@ const productsSchema = new Schema(
           type: String,
           required: true,
           rate: { type: Number, max: 5, required: true },
-          userId: {
+          user: {
             type: mongoose.Types.ObjectId,
             required: true,
             ref: "User",
