@@ -19,14 +19,14 @@ const productsSchema = new Schema(
         comment: {
           type: String,
           required: true,
-          rate: { type: Number, max: 5, required: true },
-          user: {
-            type: mongoose.Types.ObjectId,
-            required: true,
-            ref: "User",
-          },
-          reviewDate: { type: String },
         },
+        rate: { type: Number, max: 5, required: true },
+        user: {
+          type: mongoose.Types.ObjectId,
+          required: true,
+          ref: "User",
+        },
+        reviewDate: { type: String },
       },
     ],
   },

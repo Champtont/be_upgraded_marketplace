@@ -28,7 +28,8 @@ productsRouter.get("/", async (req, res, next) => {
       .skip(mongoQuery.options.skip)
       .sort(mongoQuery.options.sort)
       .populate({
-        path: "reviews.comment.user",
+        path: "reviews",
+        path: "reviews.user",
       });
     res.send({
       links: mongoQuery.links(process.env.PORT, total),
@@ -142,7 +143,9 @@ productsRouter.post("/:productId/reviews", async (req, res, next) => {
 
 productsRouter.get("/:productId/reviews", async (req, res, next) => {
   try {
-    const product = await ProductsModel.findById(req.params.productId);
+    const product = await ProductsModel.findById(req.params.productId).populate(
+      { path: "reviews.user" }
+    );
     if (product) {
       res.send(product.reviews);
     } else {
